@@ -29,7 +29,7 @@ The created `Board` object will contain several attributes. Here is a descriptio
   - `board.spaces`: will be an `Array` of [Space Objects](#space-objects);
   - `board.turn`: will be the current player turn in a `String`.
   - `board.playing_with_fairies`: will be a `Boolean` turning on/off playing with [fairies](http://en.wikipedia.org/wiki/Fairy_chess_piece).
-  - `board.log`: will be an `Array` of [Log Objects](log-objects);
+  - `board.log`: will be an `Array` of [Log Objects](#log-objects);
   - `board.move_callback`: will be the `move_callback` function included on initialization.
 
 ## Methods
