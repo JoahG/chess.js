@@ -1,0 +1,467 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>/* Fonts */
+@font-face{
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+/* Body */
+html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+
+body{
+  color:#4d4d4c;
+  font-family:Georgia, Palatino, 'Palatino Linotype', Times, 'Times New Roman',
+              "Hiragino Sans GB", "STXihei", "微软雅黑", serif;
+  font-size:12px;
+  line-height:1.5em;
+  background:#fefefe;
+  width: 45em;
+  margin: 10px auto;
+  padding: 30px;
+  border: 1px solid #ddd;
+  outline: 1300px solid #f8f8f8;
+}
+
+/* Links */
+a{ color: #06d; text-decoration:none; }
+a:hover{ color: #06e; text-decoration: underline; }
+a:active{ color:#faa700; }
+a:focus{ outline: thin dotted; }
+a:hover, a:active{ outline: 0; }
+
+::-moz-selection { background:rgba(255,255,0,0.3); color:#000 }
+::selection { background:rgba(255,255,0,0.3); color:#000 }
+
+a::-moz-selection { background:rgba(255,255,0,0.3); color:#0645ad }
+a::selection { background:rgba(255,255,0,0.3); color:#0645ad }
+
+/* Header Anchor Links*/
+.headeranchor-link {
+  color:#111;
+  border: 0;
+  margin-left: -20px;
+  padding-right: 6px;
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor-link:hover,
+.headeranchor-link:visited,
+.headeranchor-link:active
+{ text-decoration: none; color:#4d4d4c; }
+.headeranchor-link:hover .headeranchor:before,
+h1:hover .headeranchor:before,
+h2:hover .headeranchor:before,
+h3:hover .headeranchor:before,
+h4:hover .headeranchor:before,
+h5:hover .headeranchor:before,
+h6:hover .headeranchor:before
+{ content: '\f05c'; }
+
+abbr { cursor: pointer; }
+
+/* Paragraphs */
+p { margin:1em 0; }
+
+/* Images */
+img {
+  max-width:100%;
+  border: 0;
+  -ms-interpolation-mode: bicubic;
+  vertical-align: middle;
+}
+
+/* Headers */
+h1,h2,h3,h4,h5,h6 {
+  font-weight:normal;
+  color:#111;
+  line-height: 1.7;
+  position: relative;
+}
+h4,h5,h6{ font-weight: bold; }
+h1 { font-size:2.5em; border-bottom: 1px solid #ddd;}
+h2 { font-size:2em; border-bottom:1px solid #eee; padding-bottom: 5px; }
+h3 { font-size:1.5em; }
+h4 { font-size:1.2em; }
+h5 { font-size:1em; }
+h6 { font-size:0.9em; }
+
+/* Block Quotes */
+blockquote {
+  color:#666666;
+  margin:0;
+  padding-left: 3em;
+  border-left: 0.5em #EEE solid;
+}
+hr { display: block; height: 2px; border: 0; border-top: 1px solid #aaa;border-bottom: 1px solid #eee; margin: 1em 0; padding: 0; }
+
+/* Raw Blocks */
+pre, code, kbd, samp {
+  color: #000;
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  background-color: #F8F8F8;
+  border: 1px solid #CCC;
+}
+
+pre {
+  padding: 10px;
+  overflow: auto;
+}
+
+code { padding: 0 3px 0 3px; }
+pre code { border: 0; padding: 0; }
+
+/* Admonition */
+.admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-size: 0.88em;
+  padding: 0.5em 1em 0.5em 1em;
+  margin: 10px auto;
+}
+
+.admonition p {
+  padding: 0;
+  margin: 0.5em 0 0.5em 0;
+}
+
+.admonition-title {
+  font-weight: bold;
+}
+
+.admonition.attention {
+  color: #4F8A10;
+  background-color: #DFF2BF;
+  border: 1px solid #4F8A10;
+}
+
+.admonition.caution {
+  color: #9F6000;
+  background-color: #FEEFB3;
+  border: 1px solid #9F6000;
+}
+
+.admonition.hint {
+  color: #00529B;
+  background-color: #BDE5F8;
+  border: 1px solid #00529B;
+}
+
+.admonition.danger {
+  color: #D8000C;
+  background-color: #FFBABA;
+  border: 1px solid #D8000C;
+}
+
+.admonition.note {
+  color: #888888;
+  background-color: #F8F8F8;
+  border: 1px solid #888888;
+}
+
+/* Inlines */
+b, strong { font-weight: bold; }
+
+ins { background: #ff9; color: #000; text-decoration: none; }
+
+mark { background: #ff0; color: #000; font-style: italic; font-weight: bold; }
+
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sup { top: -0.5em; }
+sub { bottom: -0.25em; }
+
+dfn { font-style: italic; }
+
+/* Lists */
+ul, ol { padding-left: 30px; }
+li p:last-child { margin:0 }
+.task-list-item { list-style-type: none; }
+.task-list-item input { float:left; margin-left: -20px; margin-top: 6px; }
+dt { font-weight: bold; font-style: italic;}
+dd { margin: 0 0 0 2em; }
+
+/* Tables */
+table { width: 100%; border-collapse: collapse; overflow-x: auto; overflow-y: hidden; display: block;}
+table tr { background-color: #fefefe; }
+table tr:nth-child(2n) { background-color: #f8f8f8; }
+td, th { border: 1px solid #ddd; padding: 6px 13px; }
+
+/* Codehilite Tables */
+.codehilitetable { border: 0; border-spacing: 0; }
+.linenos, .code, .codehilitetable td { border: 0; padding: 0; }
+td:not(.linenos) .linenodiv { padding: 0 !important; }
+.code { width: 100%; }
+.linenos div pre, .linenodiv pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.code div pre {
+  border: 0;
+  border-top: 1px solid #CCC;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  body{ font-size:14px; }
+}
+
+@media only screen and (min-width: 768px) {
+  body{ font-size:16px; }
+}
+
+@media print {
+  * { background: transparent !important; color: black !important; filter:none !important; -ms-filter: none !important; }
+  body{ font-size:12pt; max-width:100%; outline:none; border: 0;}
+  a, a:visited { text-decoration: underline; }
+  .headeranchor-link { display: none; }
+  hr { height: 1px; border:0; border-bottom:1px solid black; }
+  a[href]:after { content: " (" attr(href) ")"; }
+  abbr[title]:after { content: " (" attr(title) ")"; }
+  .ir a:after, a[href^="javascript:"]:after, a[href^="#"]:after { content: ""; }
+  pre { white-space: pre; white-space: pre-wrap; word-wrap: break-word; }
+  pre, blockquote { border: 1px solid #999; padding-right: 1em; page-break-inside: avoid; }
+  tr, img { page-break-inside: avoid; }
+  img { max-width: 100% !important; }
+  p, h2, h3 { orphans: 3; widows: 3; }
+  h2, h3 { page-break-after: avoid; }
+}
+</style><title>README</title></head><body><h1 id="chessjs"><a name="user-content-chessjs" href="#chessjs" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>chess.js</h1>
+<p>Chessboard manipulation in JavaScript. Used in <a href="https://github.com/JoahG/chs.xyz">JoahG/chs.xyz</a>.</p>
+<h2 id="dependencies"><a name="user-content-dependencies" href="#dependencies" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Dependencies</h2>
+<p>chess.js has no dependencies. It works out of the box with 0 configuration.</p>
+<h2 id="initialization"><a name="user-content-initialization" href="#initialization" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Initialization</h2>
+<p>After loading chess.js into your project, simply create a new <code>Board</code> object by assigning it to a variable:</p>
+<pre><code class="javascript">  var board = new Board();
+</code></pre>
+
+<p>The <code>Board</code> object constructor takes a single optional parameter, <code>move_callback</code>, which will be called every time a move is made in the game (could be used to push data to a server, etc.). The <code>move_callback</code> function takes a single parameter, which is a <a href="">Log Object</a>;</p>
+<pre><code class="javascript">  var board = new Board(function(move){
+    // Do something here
+  })
+</code></pre>
+
+<h2 id="attributes"><a name="user-content-attributes" href="#attributes" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Attributes</h2>
+<p>The created <code>Board</code> object will contain several attributes. Here is a description of each of them:</p>
+<ul>
+<li><code>board.spaces</code>: will be an <code>Array</code> of <a href="#space-object">Space Objects</a>;</li>
+<li><code>board.turn</code>: will be the current player turn in a <code>String</code>.</li>
+<li><code>board.playing_with_fairies</code>: will be a <code>Boolean</code> turning on/off playing with <a href="http://en.wikipedia.org/wiki/Fairy_chess_piece">fairies</a>.</li>
+<li><code>board.log</code>: will be an <code>Array</code> of <a href="">Log Objects</a>;</li>
+<li><code>board.move_callback</code>: will be the <code>move_callback</code> function included on initialization.</li>
+</ul>
+<h2 id="methods"><a name="user-content-methods" href="#methods" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Methods</h2>
+<p>The created <code>Board</code> object will also contain several methods for manipulating the board. They are profiled as follows:</p>
+<ul>
+<li><code>board.space_at(coordinates)</code>: will return a <a href="#space-object">Space Object</a> existing at the inputted <code>coordinates</code> (in the form of <code>'HV'</code> - aka <code>'b3'</code>).<ul>
+<li>returns: <a href="#space-object">Space Object</a> existing at the inputted <code>coordinates</code></li>
+<li>parameters: (1)</li>
+<li><code>coordinates</code> (<code>String</code>): desired coordinates in the form of <code>'HV'</code> - aka <code>'b3'</code></li>
+</ul>
+</li>
+<li><code>board.update_guards()</code>: will update all the pieces&rsquo; spaces they are guarding.<ul>
+<li>returns: <code>undefined</code></li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li><code>board.kings_in_check(army)</code>: will determine whether or not the King is in check.<ul>
+<li>returns: </li>
+<li>with inputted <code>army</code><ul>
+<li><code>Boolean</code> (whether or not <code>army</code>&lsquo;s king is in check)</li>
+</ul>
+</li>
+<li>without inputted <code>army</code><ul>
+<li><code>Array</code> consisting of two <code>Boolean</code>s (<code>[white_in_check, black_in_check]</code>).</li>
+</ul>
+</li>
+<li>parameters: (1)</li>
+<li><code>army</code> (<code>String</code>): will restrict the return to the inputted army <strong>optional</strong></li>
+</ul>
+</li>
+<li><code>board.is_checkmate(army)</code>: will determine whether or not an army is in checkmate.<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>army</code> is in checkmate)</li>
+<li>parameters: (1)</li>
+<li><code>army</code> (<code>String</code>): which army to check for checkmate</li>
+</ul>
+</li>
+<li><code>board.next(str)</code>: will increment the inputted <code>str</code> by one value (aka input <code>'b'</code> will return <code>'c'</code>)<ul>
+<li>returns: <code>String</code></li>
+<li>parameters: (1)</li>
+<li><code>str</code> (<code>String</code>): string to be incremented.</li>
+</ul>
+</li>
+<li><code>board.prev(str)</code>: will decrement the inputted <code>str</code> by one value (aka input <code>'b'</code> will return <code>'a'</code>)<ul>
+<li>returns: <code>String</code></li>
+<li>parameters: (1)</li>
+<li><code>str</code> (<code>String</code>): string to be decremented.</li>
+</ul>
+</li>
+<li><code>board.restore(Board)</code>: will restore the current <code>Board</code> object to the inputted <code>Board</code> state.<ul>
+<li>returns: <code>undefined</code></li>
+<li>parameters: (1)</li>
+<li><code>Board</code> (<code>Object</code>): board state to be restored</li>
+</ul>
+</li>
+<li><code>board.export()</code>: will prep the board for exporting<ul>
+<li>returns: <code>String</code> (<code>JSON</code> <code>stringified</code> Board object)</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+</ul>
+<h2 id="other-object-types"><a name="user-content-other-object-types" href="#other-object-types" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Other Object Types</h2>
+<p>There are also two Object types that are children of the <code>Board</code> object constructor. They are used and included within the <code>Board</code> methods.</p>
+<h3 id="space-objects"><a name="user-content-space-objects" href="#space-objects" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Space Objects</h3>
+<p>The <code>Space</code> objects will represent each square (or &ldquo;space&rdquo;) on the board. They are contained in <code>board.spaces</code>.</p>
+<h4 id="attributes_1"><a name="user-content-attributes_1" href="#attributes_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Attributes</h4>
+<p>The <code>Space</code> objects have a few attributes, which are as follows:</p>
+<ul>
+<li><code>space.hor</code>: <code>String</code> (<code>space</code>&lsquo;s horizontal position (aka <code>'d'</code>))</li>
+<li><code>space.ver</code>: <code>String</code> (<code>space</code>&lsquo;s vertical position (aka <code>'4'</code>))</li>
+<li><code>space.is_occupied</code>: <code>false</code> if unoccupied, otherwise a <a href="#piece-object">Piece Object</a></li>
+<li><code>space.is_guarded</code>: <code>Array</code> of pieces guarding the space.</li>
+</ul>
+<h4 id="methods_1"><a name="user-content-methods_1" href="#methods_1" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Methods</h4>
+<p>The <code>Space</code> objects also have a single method, which is the following:</p>
+<ul>
+<li><code>space.guarded_by(army)</code>: returns whether or not an army is guarding a space<ul>
+<li>returns: <code>Boolean</code></li>
+<li>parameters: (1)</li>
+<li><code>army</code> (<code>String</code>)</li>
+</ul>
+</li>
+</ul>
+<h3 id="piece-objects"><a name="user-content-piece-objects" href="#piece-objects" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Piece Objects</h3>
+<p>The <code>Piece</code> objects represent the individual pieces on the board. </p>
+<h4 id="attributes_2"><a name="user-content-attributes_2" href="#attributes_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Attributes</h4>
+<p>The <code>Piece</code> objects have a few attributes, which are as follows:</p>
+<ul>
+<li><code>piece.type</code>: <code>String</code> type of piece (aka <code>'knight'</code>)</li>
+<li><code>piece.space</code>: <code>String</code> coordinates of piece (aka <code>'b2'</code>)</li>
+<li><code>piece.army</code>: <code>String</code> piece&rsquo;s army (aka <code>'white'</code>)</li>
+</ul>
+<h4 id="methods_2"><a name="user-content-methods_2" href="#methods_2" class="headeranchor-link"  aria-hidden="true"><span class="headeranchor"></span></a>Methods</h4>
+<p>The <code>Piece</code> objects also have several methods:</p>
+<ul>
+<li><code>piece.possible_moves()</code>: returns all the possible moves for a given piece<ul>
+<li>returns <code>Array</code>:</li>
+<li><code>Array[0]</code>: All the possible <em>moves</em> for the piece (<code>Array</code> of coordinates)</li>
+<li><code>Array[1]</code>: All the possible <em>captures</em> for the piece (<code>Array</code> of coordinates)</li>
+<li><code>Array[2]</code>: All the <em>moves</em> and <em>captures</em> combined (<code>Array</code> of coordinates)</li>
+<li><code>Array[3]</code>: All the spaces the piece is guarding (<code>Array</code> of coordinates)</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li><code>piece.can_take(other_piece)</code>: returns <code>Boolean</code> whether or not <code>piece</code> can take <code>other_piece</code><ul>
+<li>returns: <code>Boolean</code></li>
+<li>parameters: (1)</li>
+<li><code>other_piece</code> (<code>Object</code>): <a href="#piece-object">Piece Object</a></li>
+</ul>
+</li>
+<li><code>piece.takes(space, other_piece, is_en_passant)</code>: <code>piece</code> takes <code>other_piece</code><ul>
+<li>returns: <code>Boolean</code> (whether or not take was successful)</li>
+<li>parameters: (3)</li>
+<li><code>space</code> (<code>String</code>): coordinates of capture</li>
+<li><code>other_piece</code> (<code>Object</code>): <a href="#piece-object">Piece Object</a></li>
+<li><code>is_en_passant</code> (<code>Boolean</code>): whether or not capture is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a></li>
+</ul>
+</li>
+<li><code>piece.can_move()</code>: <ul>
+<li>returns: <code>Boolean</code> (whether or not piece can move)</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li><code>piece.can_move_to(coordinate)</code>: <ul>
+<li>returns: <code>Boolean</code> (whether or not piece can move to <code>coordinate</code>)</li>
+<li>parameters: (1)</li>
+<li><code>coordinate</code> (<code>String</code>): <code>String</code> coordinates of space (aka <code>'e1'</code>)</li>
+</ul>
+</li>
+<li><code>piece.move_to(coordinate, is_cap, is_en_passant)</code>: move <code>piece</code> to <code>coordinate</code><ul>
+<li>returns: <code>Boolean</code> (whether or not move was successful)</li>
+<li>parameters: (3)</li>
+<li><code>coordinate</code> (<code>String</code>): coordinate to move <code>piece</code> to.</li>
+<li><code>is_cap</code> (<code>Boolean</code>): whether or not move is capture.</li>
+<li><code>is_en_passant</code> (<code>Boolean</code>): whether or not capture is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a></li>
+</ul>
+</li>
+<li><code>piece.can_castle(side)</code>:<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>piece</code> can castle to <code>side</code>)</li>
+<li>parameters: (1)</li>
+<li><code>side</code> (<code>String</code>): side to castle to (either <code>'kingside'</code> or <code>'queenside'</code>)</li>
+</ul>
+</li>
+<li><code>piece.can_en_passant()</code>:<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>piece</code> can move via <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a></li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li><code>piece.move_is_en_passant(coordinate)</code>: test whether move would be <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a><ul>
+<li>returns: <code>Boolean</code> (whether or not move is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>)</li>
+<li>parameters: (1)</li>
+<li><code>coordinate</code> (<code>String</code>): coordinate to test</li>
+</ul>
+</li>
+<li><code>piece.update_guard()</code>: update a piece&rsquo;s guarded spaces<ul>
+<li>returns: <code>undefined</code></li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+</ul>
+<p>Copyright 2014 Joah Gerstenberg</p>
+<p>Permission is hereby granted, free of charge, to any person obtaining<br />
+a copy of this software and associated documentation files (the<br />
+&ldquo;Software&rdquo;), to deal in the Software without restriction, including<br />
+without limitation the rights to use, copy, modify, merge, publish,<br />
+distribute, sublicense, and/or sell copies of the Software, and to<br />
+permit persons to whom the Software is furnished to do so, subject to<br />
+the following conditions:</p>
+<p>The above copyright notice and this permission notice shall be<br />
+included in all copies or substantial portions of the Software.</p>
+<p>THE SOFTWARE IS PROVIDED &ldquo;AS IS&rdquo;, WITHOUT WARRANTY OF ANY KIND,<br />
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF<br />
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND<br />
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE<br />
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION<br />
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION<br />
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p></body></html>
