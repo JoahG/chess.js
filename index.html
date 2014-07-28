@@ -1,0 +1,473 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Chess.js by JoahG</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Chess.js</h1>
+        <p>Chess Board API in JavaScript</p>
+
+        <p class="view"><a href="https://github.com/JoahG/chess.js">View the Project on GitHub <small>JoahG/chess.js</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/JoahG/chess.js/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/JoahG/chess.js/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/JoahG/chess.js">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="chessjs" class="anchor" href="#chessjs"><span class="octicon octicon-link"></span></a>chess.js</h1>
+
+<p>Chessboard manipulation in JavaScript. Used in <a href="https://github.com/JoahG/chs.xyz">JoahG/chs.xyz</a>.</p>
+
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<p>chess.js has no dependencies. It works out of the box with 0 configuration.</p>
+
+<h2>
+<a name="initialization" class="anchor" href="#initialization"><span class="octicon octicon-link"></span></a>Initialization</h2>
+
+<p>After loading chess.js into your project, simply create a new <code>Board</code> object by assigning it to a variable:</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">();</span>
+</pre></div>
+
+<p>The <code>Board</code> object constructor takes a single optional parameter, <code>move_callback</code>, which will be called every time a move is made in the game (could be used to push data to a server, etc.). The <code>move_callback</code> function takes a single parameter, which is a <a href="#log-objects">Log Object</a>;</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="kd">var</span> <span class="nx">board</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Board</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">move</span><span class="p">){</span>
+    <span class="c1">// Do something here</span>
+  <span class="p">})</span>
+</pre></div>
+
+<h2>
+<a name="attributes" class="anchor" href="#attributes"><span class="octicon octicon-link"></span></a>Attributes</h2>
+
+<p>The created <code>Board</code> object will contain several attributes. Here is a description of each of them:</p>
+
+<ul>
+<li>
+<code>board.spaces</code>: will be an <code>Array</code> of <a href="#space-objects">Space Objects</a>;</li>
+<li>
+<code>board.turn</code>: will be the current player turn in a <code>String</code>.</li>
+<li>
+<code>board.playing_with_fairies</code>: will be a <code>Boolean</code> turning on/off playing with <a href="http://en.wikipedia.org/wiki/Fairy_chess_piece">fairies</a>.</li>
+<li>
+<code>board.log</code>: will be an <code>Array</code> of <a href="#log-objects">Log Objects</a>;</li>
+<li>
+<code>board.move_callback</code>: will be the <code>move_callback</code> function included on initialization.</li>
+</ul><h2>
+<a name="methods" class="anchor" href="#methods"><span class="octicon octicon-link"></span></a>Methods</h2>
+
+<p>The created <code>Board</code> object will also contain several methods for manipulating the board. They are profiled as follows:</p>
+
+<ul>
+<li>
+<code>board.space_at(coordinates)</code>: will return a <a href="#space-objects">Space Object</a> existing at the inputted <code>coordinates</code> (in the form of <code>'HV'</code> - aka <code>'b3'</code>).
+
+<ul>
+<li>returns: <a href="#space-objects">Space Object</a> existing at the inputted <code>coordinates</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>coordinates</code> (<code>String</code>): desired coordinates in the form of <code>'HV'</code> - aka <code>'b3'</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.update_guards()</code>: will update all the pieces' spaces they are guarding.
+
+<ul>
+<li>returns: <code>undefined</code>
+</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li>
+<code>board.kings_in_check(army)</code>: will determine whether or not the King is in check.
+
+<ul>
+<li>returns: 
+
+<ul>
+<li>with inputted <code>army</code>
+
+<ul>
+<li>
+<code>Boolean</code> (whether or not <code>army</code>'s king is in check)</li>
+</ul>
+</li>
+<li>without inputted <code>army</code>
+
+<ul>
+<li>
+<code>Array</code> consisting of two <code>Boolean</code>s (<code>[white_in_check, black_in_check]</code>).</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>army</code> (<code>String</code>): will restrict the return to the inputted army <strong>optional</strong>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.is_checkmate(army)</code>: will determine whether or not an army is in checkmate.
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>army</code> is in checkmate)</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>army</code> (<code>String</code>): which army to check for checkmate</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.next(str)</code>: will increment the inputted <code>str</code> by one value (aka input <code>'b'</code> will return <code>'c'</code>)
+
+<ul>
+<li>returns: <code>String</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>str</code> (<code>String</code>): string to be incremented.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.prev(str)</code>: will decrement the inputted <code>str</code> by one value (aka input <code>'b'</code> will return <code>'a'</code>)
+
+<ul>
+<li>returns: <code>String</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>str</code> (<code>String</code>): string to be decremented.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.restore(Board)</code>: will restore the current <code>Board</code> object to the inputted <code>Board</code> state.
+
+<ul>
+<li>returns: <code>undefined</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>Board</code> (<code>Object</code>): board state to be restored</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>board.export()</code>: will prep the board for exporting
+
+<ul>
+<li>returns: <code>String</code> (<code>JSON</code> <code>stringified</code> Board object)</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+</ul><h2>
+<a name="other-object-types" class="anchor" href="#other-object-types"><span class="octicon octicon-link"></span></a>Other Object Types</h2>
+
+<p>There are also two Object types that are children of the <code>Board</code> object constructor. They are used and included within the <code>Board</code> methods.</p>
+
+<h3>
+<a name="space-objects" class="anchor" href="#space-objects"><span class="octicon octicon-link"></span></a>Space Objects</h3>
+
+<p>The <code>Space</code> objects will represent each square (or "space") on the board. They are contained in <code>board.spaces</code>.</p>
+
+<h4>
+<a name="attributes-1" class="anchor" href="#attributes-1"><span class="octicon octicon-link"></span></a>Attributes</h4>
+
+<p>The <code>Space</code> objects have a few attributes, which are as follows:</p>
+
+<ul>
+<li>
+<code>space.hor</code>: <code>String</code> (<code>space</code>'s horizontal position (aka <code>'d'</code>))</li>
+<li>
+<code>space.ver</code>: <code>String</code> (<code>space</code>'s vertical position (aka <code>'4'</code>))</li>
+<li>
+<code>space.is_occupied</code>: <code>false</code> if unoccupied, otherwise a <a href="#piece-objects">Piece Object</a>
+</li>
+<li>
+<code>space.is_guarded</code>: <code>Array</code> of pieces guarding the space.</li>
+</ul><h4>
+<a name="methods-1" class="anchor" href="#methods-1"><span class="octicon octicon-link"></span></a>Methods</h4>
+
+<p>The <code>Space</code> objects also have a single method, which is the following:</p>
+
+<ul>
+<li>
+<code>space.guarded_by(army)</code>: returns whether or not an army is guarding a space
+
+<ul>
+<li>returns: <code>Boolean</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>army</code> (<code>String</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul><h3>
+<a name="piece-objects" class="anchor" href="#piece-objects"><span class="octicon octicon-link"></span></a>Piece Objects</h3>
+
+<p>The <code>Piece</code> objects represent the individual pieces on the board. </p>
+
+<h4>
+<a name="attributes-2" class="anchor" href="#attributes-2"><span class="octicon octicon-link"></span></a>Attributes</h4>
+
+<p>The <code>Piece</code> objects have a few attributes, which are as follows:</p>
+
+<ul>
+<li>
+<code>piece.type</code>: <code>String</code> type of piece (aka <code>'knight'</code>)</li>
+<li>
+<code>piece.space</code>: <code>String</code> coordinates of piece (aka <code>'b2'</code>)</li>
+<li>
+<code>piece.army</code>: <code>String</code> piece's army (aka <code>'white'</code>)</li>
+</ul><h4>
+<a name="methods-2" class="anchor" href="#methods-2"><span class="octicon octicon-link"></span></a>Methods</h4>
+
+<p>The <code>Piece</code> objects also have several methods:</p>
+
+<ul>
+<li>
+<code>piece.possible_moves()</code>: returns all the possible moves for a given piece
+
+<ul>
+<li>returns <code>Array</code>:
+
+<ul>
+<li>
+<code>Array[0]</code>: All the possible <em>moves</em> for the piece (<code>Array</code> of coordinates)</li>
+<li>
+<code>Array[1]</code>: All the possible <em>captures</em> for the piece (<code>Array</code> of coordinates)</li>
+<li>
+<code>Array[2]</code>: All the <em>moves</em> and <em>captures</em> combined (<code>Array</code> of coordinates)</li>
+<li>
+<code>Array[3]</code>: All the spaces the piece is guarding (<code>Array</code> of coordinates)</li>
+</ul>
+</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li>
+<code>piece.can_take(other_piece)</code>: returns <code>Boolean</code> whether or not <code>piece</code> can take <code>other_piece</code>
+
+<ul>
+<li>returns: <code>Boolean</code>
+</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>other_piece</code> (<code>Object</code>): <a href="#piece-objects">Piece Object</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.takes(space, other_piece, is_en_passant)</code>: <code>piece</code> takes <code>other_piece</code>
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not take was successful)</li>
+<li>parameters: (3)
+
+<ul>
+<li>
+<code>space</code> (<code>String</code>): coordinates of capture</li>
+<li>
+<code>other_piece</code> (<code>Object</code>): <a href="#piece-objects">Piece Object</a>
+</li>
+<li>
+<code>is_en_passant</code> (<code>Boolean</code>): whether or not capture is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.can_move()</code>: 
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not piece can move)</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li>
+<code>piece.can_move_to(coordinate)</code>: 
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not piece can move to <code>coordinate</code>)</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>coordinate</code> (<code>String</code>): <code>String</code> coordinates of space (aka <code>'e1'</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.move_to(coordinate, is_cap, is_en_passant)</code>: move <code>piece</code> to <code>coordinate</code>
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not move was successful)</li>
+<li>parameters: (3)
+
+<ul>
+<li>
+<code>coordinate</code> (<code>String</code>): coordinate to move <code>piece</code> to.</li>
+<li>
+<code>is_cap</code> (<code>Boolean</code>): whether or not move is capture.</li>
+<li>
+<code>is_en_passant</code> (<code>Boolean</code>): whether or not capture is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.can_castle(side)</code>:
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>piece</code> can castle to <code>side</code>)</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>side</code> (<code>String</code>): side to castle to (either <code>'kingside'</code> or <code>'queenside'</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.can_en_passant()</code>:
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not <code>piece</code> can move via <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>
+</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+<li>
+<code>piece.move_is_en_passant(coordinate)</code>: test whether move would be <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>
+
+<ul>
+<li>returns: <code>Boolean</code> (whether or not move is <a href="http://en.wikipedia.org/wiki/En_passant">En Passant</a>)</li>
+<li>parameters: (1)
+
+<ul>
+<li>
+<code>coordinate</code> (<code>String</code>): coordinate to test</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<code>piece.update_guard()</code>: update a piece's guarded spaces
+
+<ul>
+<li>returns: <code>undefined</code>
+</li>
+<li>parameters: (0)</li>
+</ul>
+</li>
+</ul><h3>
+<a name="log-objects" class="anchor" href="#log-objects"><span class="octicon octicon-link"></span></a>Log Objects</h3>
+
+<p>Log Objects are inserted into the <code>board.log</code> array of logged actions.</p>
+
+<p>Every log object is an <code>Array</code> containing two items:</p>
+
+<ul>
+<li>
+<code>Array[0]</code> (<code>String</code>): The action in <a href="http://en.wikipedia.org/wiki/Algebraic_notation_(chess)">Algebraic Chess notation</a>
+</li>
+<li>
+<code>Array[1]</code> (<code>Object</code>): Object with details of the action, containing the following attributes:
+
+<ul>
+<li>
+<code>type</code> (<code>String</code>): action type (either <code>'castle'</code>, <code>'move'</code>, or <code>'capture'</code>)</li>
+<li>
+<code>from</code> (<code>String</code>): coordinate of the space the piece is <em>leaving</em>
+</li>
+<li>
+<code>to</code> (<code>String</code>): coordinate of the space to which the piece is <em>arriving</em>
+</li>
+<li>
+<code>piece</code> (<code>Object</code>): <a href="#piece-objects">Piece Object</a> with piece performing action</li>
+<li>
+<code>cap_piece</code> (<code>Object</code>): (only if <code>type</code> is <code>'capture'</code>) <a href="#piece-objects">Piece Object</a> that was taken</li>
+<li>
+<code>check</code> (<code>Boolean</code>): whether or not the action put the other army in check</li>
+<li>
+<code>pawn_promotion</code> (<code>Boolean</code>): whether or not the action produced a Pawn Promotion</li>
+<li>
+<code>old_type</code> (<code>String</code>): (only if <code>pawn_promotion</code> is <code>true</code>) the <code>type</code> of the piece that was changed to <code>piece</code> in Pawn Promotion</li>
+</ul>
+</li>
+</ul><h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>If you find a bug, or would like to help out with development, just follow some simple steps:</p>
+
+<ol>
+<li><a href="https://github.com/JoahG/chess.js/issues/new">Make an issue.</a></li>
+<li><a href="https://github.com/JoahG/chess.js/fork">Fork the repo.</a></li>
+<li>Make your changes.</li>
+<li>Commit and create a pull request.</li>
+</ol><h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
+
+<p>chess.js is written and maintained by <a href="http://www.joahg.com">Joah Gerstenberg</a>, copyright 2014. All code contained within these files are licensed under an <a href="https://github.com/JoahG/chess.js/blob/master/MIT-LICENSE">MIT license</a>.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/JoahG">JoahG</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
