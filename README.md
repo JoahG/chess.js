@@ -14,7 +14,7 @@ After loading chess.js into your project, simply create a new `Board` object by 
   var board = new Board();
 ```
 
-The `Board` object constructor takes a single optional parameter, `move_callback`, which will be called every time a move is made in the game (could be used to push data to a server, etc.). The `move_callback` function takes a single parameter, which is a [Log Object]();
+The `Board` object constructor takes a single optional parameter, `move_callback`, which will be called every time a move is made in the game (could be used to push data to a server, etc.). The `move_callback` function takes a single parameter, which is a [Log Object](#log-objects);
 
 ```javascript
   var board = new Board(function(move){
@@ -26,18 +26,18 @@ The `Board` object constructor takes a single optional parameter, `move_callback
 
 The created `Board` object will contain several attributes. Here is a description of each of them:
 
-  - `board.spaces`: will be an `Array` of [Space Objects](#space-object);
+  - `board.spaces`: will be an `Array` of [Space Objects](#space-objects);
   - `board.turn`: will be the current player turn in a `String`.
   - `board.playing_with_fairies`: will be a `Boolean` turning on/off playing with [fairies](http://en.wikipedia.org/wiki/Fairy_chess_piece).
-  - `board.log`: will be an `Array` of [Log Objects]();
+  - `board.log`: will be an `Array` of [Log Objects](log-objects);
   - `board.move_callback`: will be the `move_callback` function included on initialization.
 
 ## Methods
 
 The created `Board` object will also contain several methods for manipulating the board. They are profiled as follows:
 
-  - `board.space_at(coordinates)`: will return a [Space Object](#space-object) existing at the inputted `coordinates` (in the form of `'HV'` - aka `'b3'`).
-    - returns: [Space Object](#space-object) existing at the inputted `coordinates`
+  - `board.space_at(coordinates)`: will return a [Space Object](#space-objects) existing at the inputted `coordinates` (in the form of `'HV'` - aka `'b3'`).
+    - returns: [Space Object](#space-objects) existing at the inputted `coordinates`
     - parameters: (1)
       - `coordinates` (`String`): desired coordinates in the form of `'HV'` - aka `'b3'`
   - `board.update_guards()`: will update all the pieces' spaces they are guarding.
@@ -85,7 +85,7 @@ The `Space` objects have a few attributes, which are as follows:
 
   - `space.hor`: `String` (`space`'s horizontal position (aka `'d'`))
   - `space.ver`: `String` (`space`'s vertical position (aka `'4'`))
-  - `space.is_occupied`: `false` if unoccupied, otherwise a [Piece Object](#piece-object)
+  - `space.is_occupied`: `false` if unoccupied, otherwise a [Piece Object](#piece-objects)
   - `space.is_guarded`: `Array` of pieces guarding the space.
 
 #### Methods
@@ -123,12 +123,12 @@ The `Piece` objects also have several methods:
   - `piece.can_take(other_piece)`: returns `Boolean` whether or not `piece` can take `other_piece`
     - returns: `Boolean`
     - parameters: (1)
-      - `other_piece` (`Object`): [Piece Object](#piece-object)
+      - `other_piece` (`Object`): [Piece Object](#piece-objects)
   - `piece.takes(space, other_piece, is_en_passant)`: `piece` takes `other_piece`
     - returns: `Boolean` (whether or not take was successful)
     - parameters: (3)
       - `space` (`String`): coordinates of capture
-      - `other_piece` (`Object`): [Piece Object](#piece-object)
+      - `other_piece` (`Object`): [Piece Object](#piece-objects)
       - `is_en_passant` (`Boolean`): whether or not capture is [En Passant](http://en.wikipedia.org/wiki/En_passant)
   - `piece.can_move()`: 
     - returns: `Boolean` (whether or not piece can move)
@@ -157,6 +157,24 @@ The `Piece` objects also have several methods:
   - `piece.update_guard()`: update a piece's guarded spaces
     - returns: `undefined`
     - parameters: (0)
+
+### Log Objects
+
+Log Objects are inserted into the `board.log` array of logged actions.
+
+Every log object is an `Array` containing two items:
+
+  - `Array[0]` (`String`): The action in [Algebraic Chess notation](http://en.wikipedia.org/wiki/Algebraic_notation_(chess))
+  - `Array[1]` (`Object`): Object with details of the action, containing the following attributes:
+    - `type` (`String`): action type (either `'castle'`, `'move'`, or `'capture'`)
+    - `from` (`String`): coordinate of the space the piece is *leaving*
+    - `to` (`String`): coordinate of the space to which the piece is *arriving*
+    - `piece` (`Object`): [Piece Object](#piece-objects) with piece performing action
+    - `cap_piece` (`Object`): (only if `type` is `'capture'`) [Piece Object](#piece-objects) that was taken
+    - `check` (`Boolean`): whether or not the action put the other army in check
+    - `pawn_promotion` (`Boolean`): whether or not the action produced a Pawn Promotion
+    - `old_type` (`String`): (only if `pawn_promotion` is `true`) the `type` of the piece that was changed to `piece` in Pawn Promotion
+
 
 ##Contributing
 
